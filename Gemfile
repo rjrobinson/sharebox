@@ -13,6 +13,8 @@ gem 'spring',        group: :development
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
+
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -29,6 +31,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'terminal-notifier-guard'
   gem 'launchy'
+  gem 'foundation-rails'
 end
 
 group :assets do
