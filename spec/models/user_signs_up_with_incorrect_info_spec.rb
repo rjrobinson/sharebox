@@ -7,6 +7,6 @@ feature 'a User can sign up'  do
     fill_in 'Email', with: 'example@example.com'
 
     click_on 'Sign up'
-    expect(page).to have_content("Please review the problems below: * Email * Password can't be blank *")
+    expect(page).to have_content("Passwordcan't be blank")
   end
 end
