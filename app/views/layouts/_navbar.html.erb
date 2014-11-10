@@ -1,0 +1,36 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">DropIt</a></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+        <% if user_signed_in? %>
+            <%= current_user.email  %>
+            |
+            <%= link_to "Sign out", destroy_user_session_path %>
+        <% else %>
+            <em>Not Signed in.</em>
+            <%= link_to 'Sign in', new_user_session_path%>
+            or
+            <%= link_to 'Sign up', new_user_registration_path%>
+        <% end %>
+    </ul>
+  </section>
+</nav>
+
+<div id="login_user_status">
+    <% if user_signed_in? %>
+        <%= current_user.email  %>
+        |
+        <%= link_to "Sign out", destroy_user_session_path %>
+    <% else %>
+        <em>Not Signed in.</em>
+        <%= link_to 'Sign in', new_user_session_path%>
+        or
+        <%= link_to 'Sign up', new_user_registration_path%>
+    <% end %>
+</div>
