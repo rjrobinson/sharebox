@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'carrierwave-aws'
-gem 'carrierwave'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'paperclip'
 gem 'pg'
 gem 'rails', '4.1.6'
 gem 'sass-rails', '~> 4.0.3'
