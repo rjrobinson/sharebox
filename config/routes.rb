@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'welcome#index'
+
   devise_for :users
 
-  resources :users
   resources :welcome
-  root 'welcome#index'
+  resources :users, only: [:show, :index, :edit, :update]
 
 
 end
