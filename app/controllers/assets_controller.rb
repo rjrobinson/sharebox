@@ -1,6 +1,7 @@
 class AssetsController < ApplicationController
   before_action :set_asset, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!  #authenticate for users before any methods
+
   def index
     @assets = current_user.assets
   end
