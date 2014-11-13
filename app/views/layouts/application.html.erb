@@ -10,18 +10,21 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-  <%= render 'layouts/navbar' %>
-
-
+  <nav>
+    <%= render 'layouts/navbar' %>
+  </nav>
   <body>
-    <% flash.each do |name, msg| %>
-        <div class="alert-box <%= name %>">
-          <%= msg %>
-        </div>
-      <% end %>
-
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-    <%= render 'layouts/footer' %>
+      <% flash.each do |name, msg| %>
+          <div class="alert-box <%= name %>">
+            <%= msg %>
+          </div>
+        <% end %>
+      <div class="row">
+        <div class="large-12 columns">
+        <%= yield %>
+        <%= javascript_include_tag "application" %>
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
   </body>
 </html>

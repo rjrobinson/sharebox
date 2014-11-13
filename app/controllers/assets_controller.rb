@@ -18,23 +18,26 @@ class AssetsController < ApplicationController
     @asset = current_user.assets.new(asset_params)
 
     if @asset.save
-      redirect_to @asset, notice: 'Asset added.!'
+      redirect_to assets_path, notice: 'Asset added!'
     else
       flash[:notice] = 'There was an error.'
       render :new
     end
-  end # of create
+  end
 
   def edit
-    @asset = current_user.assets.find(asset_params)
+    @asset = current_user.assets.find(params[:id])
   end
 
   def update
-    @asset = current_user.assets.find(asset_params)
+    @asset = current_user.assets.find(params[:id])
   end
 
   def destroy
-    @asset = current_user.assets.find(asset_params)
+    @asset = current_user.assets.find(params[:id])
+    @asset.destroy
+    redirect_to assets_path, notice: 'File has been removed'
+
   end
 
   def get
