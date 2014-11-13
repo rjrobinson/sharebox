@@ -1,5 +1,5 @@
 class AssetsController < ApplicationController
-  before_action :set_asset, only: [:show, :edit, :update, :destroy]
+  #before_action :set_asset, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!  #authenticate for users before any methods
 
   def index
@@ -16,7 +16,14 @@ class AssetsController < ApplicationController
 
   def create
     @asset = current_user.assets.new(asset_params)
-  end
+
+    if @asset.save
+      redirect_to @asset, notice: 'Asset added.!'
+    else
+      flash[:notice] = 'There was an error.'
+      render :new
+    end
+  end # of create
 
   def edit
     @asset = current_user.assets.find(asset_params)

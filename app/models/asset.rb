@@ -7,4 +7,8 @@ class Asset < ActiveRecord::Base
   validates_attachment_presence :uploaded_file
   do_not_validate_attachment_file_type :uploaded_file
 
+  def file_name
+    uploaded_file_file_name
+  end
+
 end
