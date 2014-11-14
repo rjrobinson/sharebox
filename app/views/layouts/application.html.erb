@@ -14,13 +14,17 @@
     <%= render 'layouts/navbar' %>
   </nav>
   <body>
-      <% flash.each do |name, msg| %>
-          <div class="alert-box <%= name %>">
-            <%= msg %>
-          </div>
+    <% flashes = {notice: 'success', alert: 'standard', error: 'alert', secondary: 'info'} %>
+    <% flashes.each do |key, value| %>
+      <% if flash[key] %>
+          <%= content_tag :div, :data => { :alert => '' }, :class => "alert-box #{value} radius" do %>
+          <%= flash[key] %>
+          <%= link_to '&times;'.html_safe, '#', :class => 'close'%>
         <% end %>
-      <div class="row">
-        <div class="large-12 columns">
+      <% end %>
+    <% end %>
+    <div class="row">
+      <div class="large-12 columns">
         <%= yield %>
         <%= javascript_include_tag "application" %>
         <%= render 'layouts/footer' %>

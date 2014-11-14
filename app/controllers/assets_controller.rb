@@ -26,11 +26,17 @@ class AssetsController < ApplicationController
   end
 
   def edit
-    @asset = current_user.assets.find(params[:id])
+    @asset = current_user.assets.find_by_id(params[:id])
   end
 
   def update
-    @asset = current_user.assets.find(params[:id])
+    @asset = current_user.assets.find_by_id(params[:id])
+    if @asset.update(asset_params)
+      redirect_to assets_path, notice: 'File Updated'
+    else
+      flash[:notice] = 'Could not update, There was an error.'
+      render :new
+    end
   end
 
   def destroy
@@ -44,6 +50,9 @@ class AssetsController < ApplicationController
     asset = current_user.assets.find_by_id(params[:id])
     if asset
       send_file asset.uploaded_file.path, type: asset.uploaded_file_content_type
+    else
+      flash[:error] = "You do not have permission to access this file. "
+      redirect_to assets_path
     end
   end
 

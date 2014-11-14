@@ -6,7 +6,7 @@ feature 'a User can sign up'  do
     visit new_user_registration_path
     fill_in 'Email', with: 'example@example.com'
 
-    click_on 'Sign up'
+    click_button 'Sign up'
     expect(page).to have_content("Passwordcan't be blank")
   end
 end
