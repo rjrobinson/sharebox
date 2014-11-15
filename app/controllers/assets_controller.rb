@@ -43,7 +43,6 @@ class AssetsController < ApplicationController
     @asset = current_user.assets.find(params[:id])
     @asset.destroy
     redirect_to assets_path, notice: 'File has been removed'
-
   end
 
   def get
